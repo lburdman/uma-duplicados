@@ -1,0 +1,32 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+
+# environment
+.env
+.env.*
+
+# pipeline output (contains patient data)
+out/
+
+# local database
+*.db
+*.sqlite
+*.sqlite3
+
+# source PDFs and anything derived from them (patient data)
+challengemaaidataengineer/
+challengemaaidataengineer.zip
+lote/
+*.pdf
+extracted/
+
+# local tooling, not part of the deliverable
+.claude/
+.atl/
+
+# os
+.DS_Store
+tools/ocr/vision-ocr

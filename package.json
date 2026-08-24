@@ -1,0 +1,29 @@
+{
+  "name": "uma-duplicados",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.6.0"
+  },
+  "scripts": {
+    "start": "node --no-warnings --experimental-strip-types src/cli/start.ts",
+    "extract": "node --no-warnings --experimental-strip-types src/cli/extract.ts",
+    "detect": "node --no-warnings --experimental-strip-types src/cli/detect.ts",
+    "report": "node --no-warnings --experimental-strip-types src/cli/report.ts",
+    "eval": "node --no-warnings --experimental-strip-types src/cli/eval.ts",
+    "test": "node --no-warnings --experimental-strip-types --test tests/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "ocr": "node --no-warnings --experimental-strip-types src/cli/ocr.ts",
+    "ocr:fallback": "node --no-warnings --experimental-strip-types src/cli/extraction-chain.ts",
+    "review": "node --no-warnings --experimental-strip-types src/cli/review.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.120.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.2"
+  }
+}
