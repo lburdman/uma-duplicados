@@ -7,7 +7,7 @@ enunciado. El *por qué* de cada decisión vive en `docs/decisions/`.
 ```bash
 pnpm install
 pnpm start ./lote                 # las tres etapas: PDFs → SQLite → JSON
-pnpm test                         # 95 tests, incluye idempotencia y fuga de PII
+pnpm test                         # 99 tests, incluye idempotencia y fuga de PII
 pnpm eval <ground-truth.json>     # precisión y recall contra el archivo que le pases
 ```
 

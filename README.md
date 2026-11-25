@@ -3,8 +3,9 @@
 ```bash
 pnpm install                      # Node ≥ 22.6 y poppler (brew install poppler)
 pnpm start ./lote                 # PDFs → SQLite → items.json + hallazgos.json
+pnpm start --help                 # el mapa del pipeline; todo comando acepta --help
 pnpm eval <ground-truth.json>     # precisión y recall contra el archivo que le pases
-pnpm test                         # 95 tests: idempotencia, fuga de PII, cada falso positivo
+pnpm test                         # 99 tests: idempotencia, fuga de PII, cada falso positivo
 ```
 
 Tres etapas separadas, con SQLite de frontera: `pnpm extract ./lote`, `pnpm detect`,

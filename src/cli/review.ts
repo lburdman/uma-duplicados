@@ -1,5 +1,6 @@
 import { centsToNumber } from '../domain/money.ts';
 import { withRepository } from '../pipeline/run.ts';
+import { handleHelp } from './help.ts';
 
 /**
  * `pnpm review`
@@ -33,6 +34,8 @@ interface DeclinedRow {
   at_risk_cents: number;
   locations: string;
 }
+
+handleHelp('review');
 
 const rows = await withRepository({}, async (repo) =>
   repo.query<DeclinedRow>(

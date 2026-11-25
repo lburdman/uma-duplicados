@@ -2,6 +2,7 @@ import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { computeMetrics } from '../eval/metrics.ts';
 import type { Actual, Expected } from '../eval/metrics.ts';
+import { handleHelp } from './help.ts';
 
 /**
  * `pnpm eval <ground-truth.json> [hallazgos.json]`
@@ -15,11 +16,13 @@ import type { Actual, Expected } from '../eval/metrics.ts';
  * shape of `hallazgos.json`, or an object with an `esperados` array. Both key on the
  * finding's type plus its item ids.
  */
+handleHelp('eval');
+
 const [, , expectedArg, actualArg] = process.argv;
 
 if (!expectedArg) {
   process.stderr.write(
-    'usage: pnpm eval <ground-truth.json> [hallazgos.json]\n\n' +
+    'usage: pnpm eval <ground-truth.json> [hallazgos.json]   (--help para el detalle)\n\n' +
       'Ground truth is not bundled with this repository. Pass the file to measure against;\n' +
       'it may be a bare array of findings or an object with an "esperados" array. Each entry\n' +
       'needs a "tipo" and either "itemIds" or an "evidencia" array carrying "itemId".\n',

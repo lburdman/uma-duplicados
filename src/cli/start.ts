@@ -1,6 +1,7 @@
 import { createLogger } from '../observability/logger.ts';
 import { runPipeline } from '../pipeline/run.ts';
 import { renderCost, renderDetection, renderExtraction } from './render.ts';
+import { handleHelp } from './help.ts';
 
 /**
  * `pnpm start <lot-directory>`
@@ -9,9 +10,11 @@ import { renderCost, renderDetection, renderExtraction } from './render.ts';
  * this run — row counts, reconciliation, findings, and both halves of the cost — because
  * a summary that restates the README instead of the run is worth nothing.
  */
+handleHelp('start');
+
 const lotDir = process.argv[2];
 if (!lotDir) {
-  process.stderr.write('usage: pnpm start <lot-directory>\n');
+  process.stderr.write('usage: pnpm start <lot-directory>   (pnpm start --help para el detalle)\n');
   process.exit(2);
 }
 

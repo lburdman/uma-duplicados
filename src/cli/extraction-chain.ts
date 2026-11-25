@@ -12,6 +12,7 @@ import { PopplerTextExtractor } from '../extraction/poppler-extractor.ts';
 import { VisionOcrExtractor } from '../extraction/vision-ocr-extractor.ts';
 import { MockPageExtractionProvider } from '../llm/mock-page-extraction-provider.ts';
 import { createLogger } from '../observability/logger.ts';
+import { handleHelp } from './help.ts';
 
 const run = promisify(execFile);
 
@@ -28,11 +29,13 @@ const run = promisify(execFile);
  * With `--no-vision` the second tier is skipped too, which is the scenario tier 3 exists
  * for: no text layer, no local OCR, and the multimodal model as the last resort.
  */
+handleHelp('ocr:fallback');
+
 const args = process.argv.slice(2);
 const noVision = args.includes('--no-vision');
 const [pdfPath, pageArg] = args.filter((a) => !a.startsWith('--'));
 if (!pdfPath) {
-  process.stderr.write('usage: pnpm ocr:fallback <pdf> [page] [--no-vision]\n');
+  process.stderr.write('usage: pnpm ocr:fallback <pdf> [page] [--no-vision]   (--help para el detalle)\n');
   process.exit(2);
 }
 const targetPage = pageArg ?? '1';

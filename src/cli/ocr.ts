@@ -4,6 +4,7 @@ import { parseRow } from '../extraction/parse-row.ts';
 import { PopplerTextExtractor } from '../extraction/poppler-extractor.ts';
 import { VisionOcrExtractor } from '../extraction/vision-ocr-extractor.ts';
 import { parseAmountToCents, formatCents } from '../domain/money.ts';
+import { handleHelp } from './help.ts';
 
 /**
  * `pnpm ocr <pdf> [page]`
@@ -17,9 +18,11 @@ import { parseAmountToCents, formatCents } from '../domain/money.ts';
  * an OCR engine that renders the description slightly differently is fine, one that
  * reads 340213 as 340218 is not.
  */
+handleHelp('ocr');
+
 const [, , pdfPath, pageArg] = process.argv;
 if (!pdfPath) {
-  process.stderr.write('usage: pnpm ocr <pdf> [page]\n');
+  process.stderr.write('usage: pnpm ocr <pdf> [page]   (pnpm ocr --help para el detalle)\n');
   process.exit(2);
 }
 const targetPage = pageArg ? Number(pageArg) : 1;
